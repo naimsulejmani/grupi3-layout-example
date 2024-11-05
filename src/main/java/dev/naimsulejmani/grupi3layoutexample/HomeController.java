@@ -26,11 +26,17 @@ public class HomeController {
     public String random() {
         Random random = new Random();
         int r = random.nextInt(3);
-        return switch (r) {
-            case 1 -> "about";
-            case 2 -> "contact";
-            default -> "index";
-        };
+         switch (r) {
+            case 1 -> {
+                 return  "about";
+             }
+            case 2 -> {
+                 return  "contact";
+             }
+            default -> {
+                 return "index";
+             }
+        }
     }
 
 }
