@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html th:replace="~{layoutFile :: layout('Home Title', ~{::section})}">
+
+<section>
+    <p>Welcome to Home Page</p>
+    <hr>
+    <div th:replace="~{/components/video-component::showVideo('https://www.youtube.com/watch?v=letCe6dE3gY&ab_channel=TheB1M', 'SPO DI', 'ELON MUSK', '1M', '2 hours ago!')}">
+
+    </div>
+</section>
+
+</html>

@@ -1,0 +1,13 @@
+<div th:fragment="showVideo(url, title, production, views, time)">
+  <div class="video-container">
+    <div class="video-player">
+      <iframe th:src="${url}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-details">
+      <h2 th:text="${title}"></h2>
+      <p><strong>Production:</strong> <span th:text="${production}"></span></p>
+      <p><strong>Views:</strong> <span th:text="${views}"></span></p>
+      <p><strong>Time:</strong> <span th:text="${time}"></span></p>
+    </div>
+  </div>
+</div>
