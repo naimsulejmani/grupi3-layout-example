@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html th:replace="~{layoutFile :: layout('Profile Title' ,~{::section})}" lang="en">
+
+<section>
+    <style>
+        img {
+            width: 200px!important;
+            height: 200px!important;;
+        }
+    </style>
+
+    <p>Welcome to Profile Page</p>
+    <hr/>
+    <p th:if="${rnd<0.5}">HEAD</p>
+    <p th:unless="${rnd<0.5}">TAIL</p>
+
+    <p><b th:text="${rnd<0.5 ? 'HEAD':'TAIL'}"
+          th:style="${rnd<0.5} ? 'color: red' : 'color: blue'"
+    ></b></p>
+
+
+    <div th:switch="${type}">
+        <p th:case="'world_cup'">Kupa Boterore</p>
+        <p th:case="'euro_cup'">Kupa Europiane</p>
+        <p th:case="'asia_cup'">Kupa Aziatike</p>
+        <p th:case="*">Ske marr pjese ne gare</p>
+        <hr>
+        <p>TEST TEST TEST</p>
+    </div>
+    <hr/>
+
+    <span th:each="element: ${#numbers.sequence(1, 10, 2)}">
+        <i th:text="${element}"></i>
+    </span>
+    <br/>
+    <hr/>
+
+    <div th:each="advertisement, advIndex: ${advertisements}" th:object="${advertisement}">
+<!--        <div class="ads-container">-->
+<!--            <img th:src="*{image}" th:alt="*{title}"/>-->
+<!--            <h3 th:text="*{title}"></h3>-->
+<!--            <p th:text="*{description}"></p>-->
+<!--            <p th:text="${advIndex.index}"></p>-->
+<!--        </div>-->
+        <div th:replace="~{/components/ads-fragment::showAds(*{image}, *{title}, *{description})}"></div>
+    </div>
+
+
+</section>
+
+</html>
+
+
+
+
+
+

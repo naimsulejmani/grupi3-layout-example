@@ -1,0 +1,11 @@
+<div th:fragment="showAds(image_url,title,description)">
+    <div class="ads-container">
+        <div class="ads-image">
+            <img style="height: 180px; width: 200px;" th:src="${image_url}" th:alt="${title}">
+        </div>
+        <div class="ads-details">
+            <h2 th:text="${title}"></h2>
+            <p th:text="${description}"></p>
+        </div>
+    </div>
+</div>
