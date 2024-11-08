@@ -60,7 +60,39 @@ public class HomeController {
 
         return "profile";
     }
+
+    @GetMapping("/names")
+    public String names(Model model) {
+        List<String> names = new ArrayList<>();
+        Random r = new Random();
+        int n = r.nextInt(2);
+        boolean isOrdered = n == 1;
+        model.addAttribute("isOrdered", isOrdered);
+
+        names.add("Naim");
+        names.add("Ardi");
+        names.add("Lirak");
+        names.add("Ardit");
+        names.add("Ardian");
+        names.add("Ardita");
+        names.add("Ardiani");
+
+        model.addAttribute("names", names);
+        return "names";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
 }
+
+
+
+
+
+
+
 
 
 

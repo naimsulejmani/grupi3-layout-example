@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html th:replace="~{layoutFile :: layout('Home Title', ~{::section})}" lang="en">
+
+<section>
+    <div th:if="${isOrdered}">
+        <ol>
+            <li th:each="name, nameIndex : ${names}">
+                <span th:style="${nameIndex.even ? 'font-weight: bold' : ''}" th:text="${name}"></span>
+            </li>
+        </ol>
+    </div>
+    <div th:unless="${isOrdered}">
+        <ul>
+            <li th:each="name, nameIndex : ${names}">
+                <span th:style="${nameIndex.even ? 'font-weight: bold' : ''}" th:text="${name}"></span>
+            </li>
+        </ul>
+    </div>
+
+
+<!--   Example of using th:block element to not make duplicate code -->
+<!--    <div>-->
+<!--        <th:block th:if="${isOrdered}">-->
+<!--            <ol>-->
+<!--        </th:block>-->
+<!--        <th:block th:unless="${isOrdered}">-->
+<!--            <ul>-->
+<!--        </th:block>-->
+<!--        <li th:each="name, nameIndex : ${names}">-->
+<!--            <span th:style="${nameIndex.even ? 'font-weight: bold' : ''}" th:text="${name}"></span>-->
+<!--        </li>-->
+<!--        <th:block th:if="${isOrdered}">-->
+<!--            </ol>-->
+<!--        </th:block>-->
+<!--        <th:block th:unless="${isOrdered}">-->
+<!--            </ul>-->
+<!--        </th:block>-->
+<!--    </div>-->
+
+
+</section>
+
+</html>
