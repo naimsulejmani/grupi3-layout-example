@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html th:replace="~{layoutFile :: layout('Subject Title', ~{::section})}" lang="en">
+
+<section>
+    <p>Welcome to Subject Page</p>
+    <hr>
+
+    <a th:href="@{/subjects}">Back to Subjects</a>
+
+    <div th:if="${subject!=null}" th:object="${subject}">
+        <p>Subject Id: <b th:text="*{id}"></b></p>
+        <p>Subject Name: <b th:text="*{name}"></b></p>
+        <p>Subject Description: <b th:text="*{description}"></b></p>
+        <p>Subject Professor: <b th:text="*{professor}"></b></p>
+        <p>Subject Semester: <b th:text="*{semester}"></b></p>
+    </div>
+    <div th:unless="${subject!=null}">
+        <p>Subject not found!</p>
+    </div>
+
+
+</section>
+
+</html>

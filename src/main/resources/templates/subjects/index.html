@@ -1,9 +1,47 @@
 <!DOCTYPE html>
-<html th:replace="~{layoutFile :: layout('Home Title', ~{::section})}" lang="en">
+<html th:replace="~{layoutFile :: layout('Subject Title', ~{::section})}" lang="en">
 
 <section>
     <p>Welcome to Subjects Page</p>
     <hr>
+    <form th:action="@{/subjects}" method="get">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+
+        <label for="professor">Professor:</label>
+        <input type="text" id="professor" name="professor">
+
+        <button type="submit">Search</button>
+
+    </form>
+    <hr/>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Professor</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="subject : ${subjects}" th:object="${subject}">
+            <td th:text="*{id}">ID</td>
+            <td th:text="*{name}">Name</td>
+            <td th:text="*{description}">Description</td>
+            <td th:text="*{professor}">Professor</td>
+            <td>
+                <!-- {id} placeholder
+                 (id=*{id} eshte pjeca e cila e mbush qat placeholder te specifikuar)-->
+                <a th:href="@{/subjects/{id}(id=*{id})}">Details</a>
+                <a th:href="@{/subjects/{id}/edit(id=*{id})}">Edit</a>
+            </td>
+        </tr>
+    </table>
 
 
 </section>
