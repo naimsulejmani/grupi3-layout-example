@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html th:replace="~{layoutFile :: layout('Home Title', ~{::section})}" lang="en">
+
+<section>
+    <p>Welcome to Students List Page</p>
+    <hr>
+        <form th:action="@{/students/list}" method="get">
+            <label for="filterName">Filter Name:</label>
+            <input type="search" id="filterName" name="name">
+            <button type="submit">Search</button>
+        </form>
+    <hr>
+    <ul>    
+        <li th:each="student : ${students}">
+            <span th:text="${student}"></span>
+        </li>
+    </ul>
+
+</section>
+
+</html>

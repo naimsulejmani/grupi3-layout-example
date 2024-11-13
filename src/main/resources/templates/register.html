@@ -2,18 +2,18 @@
 <html th:replace="~{layoutFile :: layout('Home Title', ~{::section})}" lang="en">
 
 <section>
-    <form action="/test" method="post" target="_blank">
+    <form th:action="@{/register}" method="post" th:object="${userRegister}">
         <div>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" th:field="*{username}">
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" th:field="*{password}">
         </div>
         <div>
             <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword">
+            <input type="password" id="confirmPassword" th:field="*{confirmPassword}">
         </div>
         <div>
             <button type="submit">Register</button>

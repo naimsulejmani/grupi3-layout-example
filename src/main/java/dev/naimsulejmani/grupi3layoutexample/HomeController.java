@@ -3,6 +3,9 @@ package dev.naimsulejmani.grupi3layoutexample;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,9 +85,29 @@ public class HomeController {
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        model.addAttribute("userRegister", new UserRegister());
         return "register";
     }
+
+    @GetMapping("/test")
+    public ModelAndView test(ModelAndView mav) {
+        mav.setViewName("test"); //cilin html file ka me e kthy
+        mav.addObject("name", "Naim Sulejmani");
+        return mav;
+    }
+
+    // u kriju nje endpoint i ri e cila dergon te dhana me POST ne url /register
+    @PostMapping("/register")
+    public String register(@ModelAttribute UserRegister userRegister) {
+        System.out.println(userRegister);
+
+        return "redirect:/";
+    }
+
+
+
+
 }
 
 
