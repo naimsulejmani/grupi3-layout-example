@@ -19,6 +19,9 @@
 
         <button type="submit">Search</button>
 
+        <a th:href="@{/subjects/new}" style="float:right; margin-right: 25px">New Subject</a>
+
+
     </form>
     <hr/>
     <table border="1">
@@ -37,8 +40,10 @@
             <td>
                 <!-- {id} placeholder
                  (id=*{id} eshte pjeca e cila e mbush qat placeholder te specifikuar)-->
-                <a th:href="@{/subjects/{id}(id=*{id})}">Details</a>
+                <a th:href="@{/subjects/{id}/details(id=*{id})}">Details</a>
                 <a th:href="@{/subjects/{id}/edit(id=*{id})}">Edit</a>
+                <a th:href="@{/subjects/{id}/delete(id=*{id})}">Delete</a>
+
             </td>
         </tr>
     </table>

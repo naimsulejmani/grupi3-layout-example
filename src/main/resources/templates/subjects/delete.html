@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html th:replace="~{layoutFile :: layout('Subject Delete Page', ~{::section})}" lang="en">
+
+<section>
+    <p>Welcome to Subject Delete Page</p>
+    <hr>
+
+    <a th:href="@{/subjects}">Back to Subjects</a>
+    <a onclick="window.history.back()">Back to previous page</a>
+
+    <div th:if="${subject!=null}" th:object="${subject}">
+        <p>Subject Id: <b th:text="*{id}"></b></p>
+        <p>Subject Name: <b th:text="*{name}"></b></p>
+        <p>Subject Description: <b th:text="*{description}"></b></p>
+        <p>Subject Professor: <b th:text="*{professor}"></b></p>
+        <p>Subject Semester: <b th:text="*{semester}"></b></p>
+
+
+
+        <a th:href="@{/subjects/{id}/edit(id=*{id})}">Edit</a>
+    </div>
+    <div>
+        <button>DELETE</button>
+    </div>
+    <div th:unless="${subject!=null}">
+        <p>Subject not found!</p>
+    </div>
+
+
+</section>
+
+</html>

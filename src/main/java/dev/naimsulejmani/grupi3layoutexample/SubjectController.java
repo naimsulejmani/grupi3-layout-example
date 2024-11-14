@@ -2,10 +2,7 @@ package dev.naimsulejmani.grupi3layoutexample;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +33,7 @@ public class SubjectController {
     // http://localhost:8080/subjects/1
     // http://localhost:8080/subjects/OOP
     // http://localhost:8080/subjects/SPO+DI+SEN
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/details")
     public String subject(Model model, @PathVariable("id") String id) {
         var subject = subjects
                 .stream()
@@ -62,6 +59,24 @@ public class SubjectController {
     }
 
 
+    @GetMapping("/new")
+    public String newSubject(Model model) {
+        model.addAttribute("subject", new Subject());
+        return "subjects/new";
+    }
+//http://localhost:8080/subjects/1/delete
+    @GetMapping("/{id}/delete")
+    public String deleteSubject(Model model, @PathVariable("id") String id) {
+        var subject = subjects
+                .stream()
+                .filter(s -> s.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+
+        model.addAttribute("subject", subject);
+        return "subjects/delete";
+    }
+
 //    public Subject findSubjectById(String id) {
 //        Subject subject = null;
 //        for (Subject s : subjects) {
@@ -73,5 +88,22 @@ public class SubjectController {
 //        return subject;
 //    }
 
+    @PostMapping("")
+    public String saveSubject(@ModelAttribute Subject subject) {
+        subjects.add(subject);
+        return "redirect:/subjects";
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
