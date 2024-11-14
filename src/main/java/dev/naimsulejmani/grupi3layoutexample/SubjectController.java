@@ -30,7 +30,7 @@ public class SubjectController {
                         @RequestParam(value = "professor", required = false) String professor
     ) {
         model.addAttribute("subjects", subjects);
-        return "subjects/index";
+        return "subjects/list";
     }
 
     // http://localhost:8080/subjects/1
@@ -45,7 +45,7 @@ public class SubjectController {
                 .orElse(null);
 
         model.addAttribute("subject", subject);
-        return "subjects/subject";
+        return "subjects/details";
     }
 
     // http://localhost:8080/subjects/1/edit

@@ -6,6 +6,8 @@
     <hr>
 
     <a th:href="@{/subjects}">Back to Subjects</a>
+    <a onclick="window.history.back()">Back to previous page</a>
+
 
     <form th:if="${subject!=null}" th:object="${subject}">
         <input type="hidden" th:value="*{id}" id="id" name="id"/>

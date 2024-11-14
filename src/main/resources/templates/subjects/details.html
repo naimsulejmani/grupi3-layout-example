@@ -6,6 +6,7 @@
     <hr>
 
     <a th:href="@{/subjects}">Back to Subjects</a>
+    <a onclick="window.history.back()">Back to previous page</a>
 
     <div th:if="${subject!=null}" th:object="${subject}">
         <p>Subject Id: <b th:text="*{id}"></b></p>
@@ -13,6 +14,8 @@
         <p>Subject Description: <b th:text="*{description}"></b></p>
         <p>Subject Professor: <b th:text="*{professor}"></b></p>
         <p>Subject Semester: <b th:text="*{semester}"></b></p>
+
+        <a th:href="@{/subjects/{id}/edit(id=*{id})}">Edit</a>
     </div>
     <div th:unless="${subject!=null}">
         <p>Subject not found!</p>
